@@ -1,0 +1,16 @@
+
+
+##Flow
+Http REQUEST --> WSGI Server creates "environ" and "start_response" --> 
+calls Application (Example:simple_app) or Application's "__call__" if Application is an instance of a class --> 
+calls ``start_response`` with status and headers --> returns iterable
+
+
+##Flow
+Http REQUEST --> 
+WSGI Server creates "environ" and "start_response" --> 
+Middleware A's ``__call__`` ---> 
+Middleware B's ``__call__`` --> 
+Middleware C's ``__call__`` --> 
+Application's ``__call__`` --> 
+calls ``start_response`` with status and headers --> returns iterable
